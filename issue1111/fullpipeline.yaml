@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task1
@@ -40,7 +40,7 @@ sspec:
       persistentVolumeClaim:
         claimName: $(inputs.params.task-pvc)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task2
@@ -72,7 +72,7 @@ spec:
       persistentVolumeClaim:
         claimName: $(inputs.params.task-pvc)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task3
@@ -113,7 +113,7 @@ spec:
       persistentVolumeClaim:
         claimName: $(inputs.params.task-pvc)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: pipeline
@@ -171,7 +171,7 @@ spec:
         - name: apikey
           value: $(params.apikey)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: template
@@ -187,7 +187,7 @@ spec:
     - name: apikey
       description: the ibmcloud api key
   resourcetemplates:
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
         name: pipelinerun-$(uid)
@@ -206,7 +206,7 @@ spec:
         - name: apikey
           value: $(params.apikey)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: binding
@@ -219,7 +219,7 @@ spec:
     - name: prnumber
       value: $(event.pull_request.url)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: listener

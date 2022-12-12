@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Condition
 metadata:
   name: file-exists
@@ -12,7 +12,7 @@ spec:
     image: alpine
     script: 'test -f $(resources.workspace.path)/$(params.path)'
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: PipelineResource
 metadata:
   name: pipeline-git
@@ -24,7 +24,7 @@ spec:
     - name: url
       value: https://github.com/tektoncd/pipeline
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: create-readme-file
@@ -38,7 +38,7 @@ spec:
       image: ubuntu
       script: 'touch $(outputs.resources.workspace.path)/README.md'
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: echo-hello
@@ -48,7 +48,7 @@ spec:
       image: ubuntu
       script: 'echo hello'
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: conditional-pipeline
@@ -80,13 +80,13 @@ spec:
       taskRef:
         name: echo-hello
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: pipeline-template
 spec:
   resourcetemplates:
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
         name: condtional-pr
@@ -98,21 +98,21 @@ spec:
             resourceRef:
               name: pipeline-git
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: pipeline-binding
 spec:
   params:
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: manual-pipeline-binding
 spec:
   params:
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: listener
@@ -126,7 +126,7 @@ spec:
         - name: message
           value: Hello from the Git Triggers EventListener!
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: manual-listener

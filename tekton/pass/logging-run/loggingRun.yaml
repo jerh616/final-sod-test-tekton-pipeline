@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task1
@@ -13,7 +13,7 @@ spec:
       command: ['bash']
       args: ['-c', 'echo task 1 step 2;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task2
@@ -28,7 +28,7 @@ spec:
       command: ['bash']
       args: ['-c', 'echo task 2 step 2;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: sample-pipeline
@@ -42,7 +42,7 @@ spec:
       taskRef:
         name: task2
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: pipeline-template
@@ -57,7 +57,7 @@ spec:
       description: The message to print
       default: This is the default message
   resourcetemplates:
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineResource
       metadata:
         name: git-source-$(uid)
@@ -71,7 +71,7 @@ spec:
             value: $(params.gitrevision)
           - name: url
             value: $(params.gitrepositoryurl)
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
         generateName: sample-pipeline-run
@@ -82,7 +82,7 @@ spec:
         pipelineRef:
           name: sample-pipeline
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: pipeline-binding
@@ -93,7 +93,7 @@ spec:
     - name: gitrepositoryurl
       value: $(event.repository.url)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: manual-pipeline-binding
@@ -104,7 +104,7 @@ spec:
     - name: gitrepositoryurl
       value: https://github.com/GoogleContainerTools/skaffold
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: listener
@@ -118,7 +118,7 @@ spec:
         - name: message
           value: Hello from the Git Triggers EventListener!
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: manual-listener

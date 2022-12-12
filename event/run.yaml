@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: git-clone-repo
@@ -35,7 +35,7 @@ spec:
         - name: gitrevision
           value: $(params.gitrevision)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: pipeline-template
@@ -44,7 +44,7 @@ spec:
     - name: gitrevision
     - name: repository
   resourcetemplates:
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
         generateName: cutting-down-trees-run
@@ -60,7 +60,7 @@ spec:
         pipelineRef:
           name: pipeline
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: pipeline-binding
@@ -71,7 +71,7 @@ spec:
     - name: gitrevision
       value: $(event.pull_request)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: manual-pipeline-binding
@@ -82,7 +82,7 @@ spec:
     - name: repository
       value: https://github.com/GoogleContainerTools/skaffold
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: listener
@@ -96,7 +96,7 @@ spec:
         - name: message
           value: Hello from the Git Triggers EventListener!
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: manual-listener

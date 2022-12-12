@@ -72,7 +72,7 @@ kind: TriggerBinding
 metadata:
   name: echo-pipeline-binding
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: echo-pipeline-template

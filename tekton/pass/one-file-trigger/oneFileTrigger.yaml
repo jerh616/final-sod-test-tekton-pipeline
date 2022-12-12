@@ -1,5 +1,5 @@
 # Task writes "some stuff" to a predefined path in the workspace git PipelineResource hi XinYi
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: create-file
@@ -24,7 +24,7 @@ spec:
       args: ['-c', 'ln -s /workspace/workspace /workspace/output/workspace && echo some stuff > /workspace/output/workspace/stuff']
 ---
 # Reads a file from a predefined path in the workspace git PipelineResource
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: check-stuff-file-exists
@@ -43,7 +43,7 @@ spec:
 #The Output of the first Task (git resource) create-file is given as an `Input`
 # to the next `Task` check-stuff-file-exists using`from` clause.
 
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: output-pipeline
@@ -71,7 +71,7 @@ spec:
             resource: source-repo
             from: [first-create-file]
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: pipeline-template
@@ -86,7 +86,7 @@ spec:
       description: The message to print
       default: This is the default message
   resourcetemplates:
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineResource
       metadata:
         name: git-source-$(uid)
@@ -100,7 +100,7 @@ spec:
             value: $(params.gitrevision)
           - name: url
             value: $(params.gitrepositoryurl)
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
         generateName: output-pipeline-run
@@ -119,7 +119,7 @@ spec:
             resourceRef:
               name: git-source-$(uid)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: pipeline-binding
@@ -130,7 +130,7 @@ spec:
     - name: gitrepositoryurl
       value: $(event.repository.url)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: manual-pipeline-binding
@@ -141,7 +141,7 @@ spec:
     - name: gitrepositoryurl
       value: https://github.com/GoogleContainerTools/skaffold
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: listener
@@ -155,7 +155,7 @@ spec:
         - name: message
           value: Hello from the Git Triggers EventListener!
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: manual-listener

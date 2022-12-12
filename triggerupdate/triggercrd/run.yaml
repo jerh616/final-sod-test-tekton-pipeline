@@ -214,7 +214,7 @@ spec:
     - name: second-one
       value: "second-param-one-value"
 ---
-apiVersion: triggers.tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: Trigger
 metadata:
   name: trigger

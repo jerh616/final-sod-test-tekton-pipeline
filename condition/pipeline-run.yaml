@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Condition
 metadata:
   name: verify-no-file-exists-without-resource
@@ -13,7 +13,7 @@ spec:
     image: alpine
     script: 'test ! -f $(resources.optional-workspace.path)/$(params.path)'
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: PipelineResource
 metadata:
   name: pipeline-git-repo
@@ -25,7 +25,7 @@ spec:
     - name: url
       value: https://github.com/tektoncd/pipeline
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: list-pipeline-repo-files
@@ -40,7 +40,7 @@ spec:
       image: ubuntu
       script: 'ls -al $(inputs.resources.optional-workspace.path)'
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: pipeline-list-pipeline-repo-files
@@ -71,7 +71,7 @@ spec:
           - name: optional-workspace
             resource: pipeline-source-repo
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: pipeline-template
@@ -86,7 +86,7 @@ spec:
       description: The message to print
       default: This is the default message
   resourcetemplates:
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
         name: demo-condtional-pr-without-condition-resource
@@ -98,7 +98,7 @@ spec:
             resourceRef:
               name: pipeline-git-repo
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: pipeline-binding
@@ -109,7 +109,7 @@ spec:
     - name: gitrepositoryurl
       value: $(event.repository.url)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: manual-pipeline-binding
@@ -120,7 +120,7 @@ spec:
     - name: gitrepositoryurl
       value: https://github.com/GoogleContainerTools/skaffold
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: listener
@@ -134,7 +134,7 @@ spec:
         - name: message
           value: Hello from the Git Triggers EventListener!
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: manual-listener

@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task-deployment
@@ -17,7 +17,7 @@ spec:
         - echo $DEPLOYMENTS_REPO_BRANCH && echo test
 ---
 #comment 2
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: pipeline-deployment-staging
@@ -33,7 +33,7 @@ spec:
           value: $(params.DEPLOYMENTS_REPO_BRANCH)
 ---
 #comment 2
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: pipeline-deployment-staging
@@ -48,7 +48,7 @@ spec:
         - name: DEPLOYMENTS_REPO_BRANCH
           value: $(params.DEPLOYMENTS_REPO_BRANCH)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: template
@@ -57,7 +57,7 @@ spec:
     - name: gitrevision
     - name: DEPLOYMENTS_REPO_BRANCH
   resourcetemplates:
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
         name: deployment-$(uid)
@@ -68,7 +68,7 @@ spec:
           - name: DEPLOYMENTS_REPO_BRANCH
             value: $(params.gitrevision)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: binding
@@ -77,7 +77,7 @@ spec:
     - name: gitrevision
       value: $(event.head_commit.id)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: listener

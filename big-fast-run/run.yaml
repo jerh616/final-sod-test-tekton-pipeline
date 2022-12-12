@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: atask1
@@ -9,7 +9,7 @@ spec:
     command: ['bash']
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: emptylogs
@@ -20,7 +20,7 @@ spec:
     command: ['bash']
     args: ['-c', 'echo "Hello World!"'] 
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task2
@@ -31,7 +31,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task3
@@ -42,7 +42,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task4
@@ -53,7 +53,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task5
@@ -64,7 +64,7 @@ spec:
     command: ['bash']
     args: ['-c', 'echo "Hello World!" && return 1;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task6
@@ -75,7 +75,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: bbtask7
@@ -86,7 +86,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task8
@@ -97,7 +97,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task9
@@ -108,7 +108,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task10
@@ -119,7 +119,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task11
@@ -130,7 +130,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task12
@@ -141,7 +141,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task13
@@ -152,7 +152,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task14
@@ -163,7 +163,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task15
@@ -174,7 +174,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task16
@@ -185,7 +185,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task17
@@ -196,7 +196,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task18
@@ -207,7 +207,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task19
@@ -218,7 +218,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'echo "Hello World!"']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task20
@@ -229,7 +229,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task21
@@ -240,7 +240,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task22
@@ -251,7 +251,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task23
@@ -262,7 +262,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task24
@@ -273,7 +273,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task25
@@ -284,7 +284,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task26
@@ -295,7 +295,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task27
@@ -306,7 +306,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task28
@@ -317,7 +317,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task29
@@ -328,7 +328,7 @@ spec:
     command: ["/bin/bash"]
     args: ['-c', 'for i in {1..300}; do echo GONLOGGIN $i; done;']
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task30
@@ -342,7 +342,7 @@ spec:
 #The Output of the first Task (git resource) create-file is given as an `Input`
 # to the next `Task` check-stuff-file-exists using`from` clause.
 
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: 999-working-logs-long
@@ -444,7 +444,7 @@ spec:
     taskRef:
       name: task30
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: pipeline-template
@@ -459,7 +459,7 @@ spec:
       description: The message to print
       default: This is the default message
   resourcetemplates:
-    - apiVersion: tekton.dev.what/v1alpha1
+    - apiVersion: tekton.dev.what/v1beta1
       kind: PipelineResource
       metadata:
         name: git-source-$(uid)
@@ -473,7 +473,7 @@ spec:
           value: $(params.gitrevision)
         - name: url
           value: $(params.gitrepositoryurl)
-    - apiVersion: tekton.dev/v1alpha1
+    - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
         generateName: cutting-down-trees-run
@@ -484,7 +484,7 @@ spec:
         pipelineRef:
           name: 999-working-logs-long
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: pipeline-binding
@@ -495,7 +495,7 @@ spec:
     - name: gitrepositoryurl
       value: $(event.repository.url)
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: manual-pipeline-binding
@@ -506,7 +506,7 @@ spec:
     - name: gitrepositoryurl
       value: https://github.com/GoogleContainerTools/skaffold
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: listener
@@ -520,7 +520,7 @@ spec:
         - name: message
           value: Hello from the Git Triggers EventListener!
 ---
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: manual-listener
