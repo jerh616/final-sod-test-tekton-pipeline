@@ -55,20 +55,6 @@ spec:
       description: The message to print
       default: This is the default message
   resourcetemplates:
-    - apiVersion: tekton.dev.what/v1beta1
-      kind: PipelineResource
-      metadata:
-        name: git-source-$(uid)
-        labels:
-          triggertemplated: "true"
-          generatedBy: "triggers-example"
-      spec:
-        type: git
-        params:
-        - name: revision
-          value: $(params.gitrevision)
-        - name: url
-          value: $(params.gitrepositoryurl)
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
